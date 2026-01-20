@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
+<<<<<<< HEAD
     <header className="navbar">
       <div className="navbar-container">
         {/* Logo/Brand */}
@@ -57,3 +58,21 @@ export default function Navbar() {
     </header>
   );
 }
+=======
+    <nav style={styles.nav}>
+      <Link to="/">Home</Link>
+      <Link to="/allCards">Cards</Link>
+      <Link to="/addCards">Add Card</Link>
+    </nav>
+  );
+}
+
+const styles = {
+  nav: {
+    display: "flex",
+    gap: "1.5rem",
+    padding: "1rem",
+    borderBottom: "1px solid #ccc",
+  },
+};
+>>>>>>> 64f503c242e25f668b2ce912cc9a4f9cade165f5
