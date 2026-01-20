@@ -12,8 +12,10 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cards" element={<CardList />} />
-        {/* TODO: Complete the routes */}
+        <Route path="/allcards" element={<CardList />} />
+        <Route path="/addcard" element={<AddCard />} />
+        <Route path="/editcard/:id" element={<EditCard />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
