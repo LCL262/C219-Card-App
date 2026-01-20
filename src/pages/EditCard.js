@@ -1,14 +1,41 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import CardForm from "../components/CardForm";
-import { getCards, updateCard } from "../services/api";
+import { updateCard } from "../services/api";
 
 export default function EditCard() {
-  /* TODO: Complete the EditCard page
-    - display a form for editing a card (use the CardForm component to display the form)
-    - handle form submission to call updateCard API
-    - handle loading, busy, and error states
-    - style as a form UI */
+  const { state: card } = useLocation();
+  const navigate = useNavigate();
 
-  return <main></main>;
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  if (!card) {
+    return <main>No card selected</main>;
+  }
+
+  const handleSubmit = async (data) => {
+    setBusy(true);
+    try {
+      await updateCard(card.id, data);
+      navigate("/cards");
+    } catch {
+      setError("Failed to update card");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <main style={{ padding: "2rem" }}>
+      <h2>Edit Card</h2>
+      {error && <p>{error}</p>}
+
+      <CardForm
+        initialData={card}
+        onSubmit={handleSubmit}
+        busy={busy}
+      />
+    </main>
+  );
 }
