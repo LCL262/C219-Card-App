@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 // The rest of your code stays the same
 
@@ -80,39 +79,22 @@ export const deleteCard = async (id) => {
     throw error;
   }
 };
-=======
-const API_URL = process.env.REACT_APP_API_URL || "";
 
-export async function getCards() {
-  const res = await fetch(`${API_URL}/cards`);
-  if (!res.ok) throw new Error("Failed to fetch cards");
-  return res.json();
-}
-
-export async function addCard(card) {
-  const res = await fetch(`${API_URL}/cards`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(card),
-  });
-  if (!res.ok) throw new Error("Failed to add card");
-  return res.json();
-}
-
-export async function updateCard(id, card) {
-  const res = await fetch(`${API_URL}/cards/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(card),
-  });
-  if (!res.ok) throw new Error("Failed to update card");
-  return res.json();
-}
-
-export async function deleteCard(id) {
-  const res = await fetch(`${API_URL}/cards/${id}`, {
-    method: "DELETE",
-  });
-  if (!res.ok) throw new Error("Failed to delete card");
-}
->>>>>>> 64f503c242e25f668b2ce912cc9a4f9cade165f5
+// Get a single card by ID
+export const getCardById = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/allcards`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const cards = await response.json();
+    const card = cards.find(c => c.id == id);
+    if (!card) {
+      throw new Error(`Card with ID ${id} not found`);
+    }
+    return card;
+  } catch (error) {
+    console.error("Error fetching card:", error);
+    throw error;
+  }
+};
