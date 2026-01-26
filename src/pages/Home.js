@@ -25,7 +25,7 @@ export default function Home() {
               View Cards
             </Link>
             {/* CHANGE THIS LINE FROM /addCard to /add */}
-            <Link to="/addCard" className="home-button secondary">
+            <Link to="/addcard" className="home-button secondary">
               Add New Card
             </Link>
           </div>
