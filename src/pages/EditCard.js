@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardForm from "../components/CardForm";
-import { getCardById, updateCard } from "../services/api";
+import { updateCard } from "../services/api";
 
 export default function EditCard() {
   const navigate = useNavigate();
