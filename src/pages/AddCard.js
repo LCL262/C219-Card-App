@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import CardForm from "../components/CardForm";
 import { addCard } from "../services/api";
@@ -11,6 +11,11 @@ export default function AddCard() {
     cardname: "", // CHANGED: card_name → cardname
     cardpic: ""   // CHANGED: card_pic → cardpic
   });
+
+  useEffect(() => {
+      const token = localStorage.getItem("token");
+      if (!token) navigate("/login");
+  }, [navigate]);
 
   const handleSubmit = async (data) => {
     try {

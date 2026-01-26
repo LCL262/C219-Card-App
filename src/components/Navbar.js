@@ -1,20 +1,43 @@
-import { Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export default function Navbar() {
-  return (
-    <nav style={styles.nav}>
-      <Link to="/">Home</Link>
-      <Link to="/allCard">Cards</Link>
-      <Link to="/addCard">Add Card</Link>
-    </nav>
-  );
-}
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
-const styles = {
-  nav: {
-    display: "flex",
-    gap: "1.5rem",
-    padding: "1rem",
-    borderBottom: "1px solid #ccc",
-  },
-};
+    function handleLogout() {
+        localStorage.removeItem("token");
+        navigate("/");
+    }
+
+    return (
+        <header className="navbar">
+            <div className="navbar__brand">Card App</div>
+            <nav className="navbar__links">
+                <NavLink
+                    to="/"
+                    end
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    to="/cards"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                    Cards
+                </NavLink>
+                <NavLink
+                    to="/cards/new"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                    Add Card
+                </NavLink>
+                {token ? (
+                    <button onClick={handleLogout}>Logout</button>
+                ) : (
+                    <NavLink to="/login">Login</NavLink>
+                )}
+            </nav>
+        </header>
+    );
+}
