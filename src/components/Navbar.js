@@ -21,13 +21,13 @@ export default function Navbar() {
                     Home
                 </NavLink>
                 <NavLink
-                    to="/cards"
+                    to="/allCard"
                     className={({ isActive }) => (isActive ? "active" : "")}
                 >
                     Cards
                 </NavLink>
                 <NavLink
-                    to="/cards/new"
+                    to="/addCard"
                     className={({ isActive }) => (isActive ? "active" : "")}
                 >
                     Add Card

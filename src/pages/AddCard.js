@@ -23,7 +23,7 @@ export default function AddCard() {
       setError("");
       console.log("Submitting data:", data); // Debug log
       await addCard(data);
-      navigate("/cards"); 
+      navigate("/allCard");
     } catch (err) {
       console.error("Error adding card:", err); // Debug log
       setError("Failed to add card"); 
