@@ -27,7 +27,7 @@ export default function Navbar() {
                     Cards
                 </NavLink>
                 <NavLink
-                    to="/addCard"
+                    to="/addcard"
                     className={({ isActive }) => (isActive ? "active" : "")}
                 >
                     Add Card
