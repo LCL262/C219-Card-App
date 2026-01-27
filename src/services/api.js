@@ -14,7 +14,7 @@ export async function login(credentials) {
 }
 
 export async function getCards() {
-    const res = await fetch(`${API_BASE_URL}/allCard`);
+    const res = await fetch(`${API_BASE_URL}/allcards`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
 }
@@ -28,7 +28,7 @@ export function addCard(card) {
 }
 
 export function updateCard(id, card) {
-    return fetch(`${API_BASE_URL}/editcard/${id}`, {
+    return fetch(`${API_BASE_URL}/updatecard/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(card),
