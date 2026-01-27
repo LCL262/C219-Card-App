@@ -9,8 +9,8 @@ export default function EditCard() {
     const [busy, setBusy] = useState(false);
     const [error, setError] = useState("");
     const [cardData, setCardData] = useState({
-        card_name: "",
-        card_pic: ""
+        cardname: "",
+        cardpic: ""
     });
 
     const handleSubmit = async () => {
